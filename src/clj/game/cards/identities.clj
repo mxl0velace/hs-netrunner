@@ -1961,8 +1961,7 @@
              :req (req (and (has-subtype? (:card context) "Advertisement")
                             (first-event? state :corp :rez #(has-subtype? (:card (first %)) "Advertisement"))))
              :async true
-             :effect ((effect (lose-credits :runner eid 1))
-                      (effect (gain-credits :corp eid 1)))
+             :effect (effect (lose-credits :runner eid 1))
              :msg "make the Runner lose 1 [Credits] by rezzing an Advertisement"}]})
 
 (defcard "Sportsmetal: Go Big or Go Home"
@@ -1973,7 +1972,7 @@
             :msg (msg (decapitalize target))
             :async true
             :interactive (req true)
-            :effect (req (if (= target "Gain 2 [Credits]")
+            :effect (req (if (= target "Gain 3 [Credits]")
                            (gain-credits state :corp eid 3)
                            (draw state :corp eid 3)))}]
     {:events [(assoc ab :event :agenda-scored)
